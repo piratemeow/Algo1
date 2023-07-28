@@ -1,1 +1,1 @@
-Topological sorting can not be done for this graph
+Bipartite
