@@ -2,12 +2,12 @@
 using namespace std;
 
 const int N = 1e7+3;
-int color[N]; // 0 for while 1 for black and -1 for grey
+int color[N]; // 0 for white 1 for black and -1 for grey
 int d[N]; // Discovery time
 int f[N]; // Finish time
 int pi[N]; // Tree edge
 int t = 0; // To track time
-
+bool flag;
 void dfs(vector<int>v[], int ver,stack<int>&s)
 {
     //cout<<ver<<endl;
@@ -20,6 +20,10 @@ void dfs(vector<int>v[], int ver,stack<int>&s)
         {
             dfs(v,x,s);
             pi[x] = ver;
+        }
+        else if (color[x]==-1)
+        {
+            flag = 0;
         }
     }
     t = t + 1;
@@ -48,18 +52,28 @@ int main ()
         //v[b].push_back(a); // Change here for the directed graph
     }
     int time = 0;
+
+    flag = 1;
+
     for (int i=1;i<=n;i++)
     {
         if (color[i]==0)
         {
-           
             dfs(v,i,s);
         }
     }
-
-    while (!s.empty())
+    if (!flag)
     {
-        cout<<s.top()<<endl;
-        s.pop();
+        cout<<"Topological sort is not possible\n";
     }
+    else
+    {
+        while (!s.empty())
+        {
+            cout<<s.top()<<" ";
+            s.pop();
+        }
+
+    }
+    
 }

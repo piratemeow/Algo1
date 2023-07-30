@@ -26,7 +26,7 @@ int main ()
         sort(v[i].begin(),v[i].end());
         if (indegree[i]==0)
         {
-            cout<<i<<endl;
+            //cout<<i<<endl;
             q.push(i);
         }
     }
