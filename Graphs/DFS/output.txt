@@ -1,1 +1,1 @@
-Topological sort is not possible
+Not Bipartite

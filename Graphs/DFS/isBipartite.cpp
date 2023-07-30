@@ -16,8 +16,8 @@ bool isBipartite(vector<int> v[], int ver)
     {
         if (visi[x]==0)
         {
-            flag |= isBipartite(v,x);
             color[x]=~color[ver];
+            flag |= isBipartite(v,x);            
         }
         else
         {
