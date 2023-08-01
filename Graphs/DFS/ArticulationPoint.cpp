@@ -29,12 +29,13 @@ void dfs(vector<int> v[], int ver, int par, set<int> &ans)
             {
                 ans.insert(ver);
             }
-            child++;
+            
         }
         else
         {
             low[ver] = min(low[ver],d[x]);
         }
+        child++;
     }
 
     
