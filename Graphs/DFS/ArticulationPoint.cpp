@@ -37,6 +37,8 @@ void dfs(vector<int> v[], int ver, int par, set<int> &ans)
         }
     }
 
+    
+
     if (child>1 && par==-1)
     {
         ans.insert(ver);
