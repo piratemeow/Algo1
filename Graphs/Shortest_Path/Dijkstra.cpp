@@ -4,9 +4,10 @@ using namespace std;
 const int inf = 1e9 + 7;
 
 // Implementation of dijkstra algorithm
-// Complexity O(nlogn + e)
+// Complexity O(VlogV + E)
 // 1 based indexing of edges
 // Does not work for the graphs with negative edge weights and cycles
+// TLE for the graphs with negative cycles
 
 int main()
 {
@@ -43,15 +44,10 @@ int main()
         pq.pop();
         int wt = cur.first;
         int ver = cur.second;
-        visi[ver]= 1;
+        // visi[ver]= 1;
 
         for (auto x : v[ver])
         {
-            if (visi[x.first])
-            {
-                continue;
-            }
-
             if (dis[ver] + x.second < dis[x.first])
             {
                 dis [x.first] = dis[ver] + x.second;

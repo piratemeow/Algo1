@@ -6,6 +6,7 @@ using namespace std;
 // thereby we iterate for N-1 iterations
 
 // Implementation of Bellman Ford algorithm
+// Complexity O(V*E)
 // Works on negative edge weights
 // Does not work on negative cycles
 // Can detect negative cycles
