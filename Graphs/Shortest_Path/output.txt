@@ -1,5 +1,4 @@
-0 2 1 
-2 0 -1 
-1 -1 0 
-
-The graph has a negative cycel
+0
+-5
+-1
+0
