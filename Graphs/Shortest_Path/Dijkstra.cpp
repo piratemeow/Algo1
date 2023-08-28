@@ -44,10 +44,13 @@ int main()
         pq.pop();
         int wt = cur.first;
         int ver = cur.second;
-        // visi[ver]= 1;
+        visi[ver]= 1;
 
         for (auto x : v[ver])
         {
+            if (visi[x.first]==1)
+                continue;
+
             if (dis[ver] + x.second < dis[x.first])
             {
                 dis [x.first] = dis[ver] + x.second;
