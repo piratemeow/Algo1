@@ -25,7 +25,7 @@ void dfs(vector<int> v[], int ver, int par, vector<pair<int,int>> &ans)
         {
             dfs(v,x,ver,ans);
             low[ver] = min(low[x],low[ver]);
-            if (low[x]>low[ver])
+            if (low[x]>d[ver])
             {
                 ans.push_back({ver,x});
             }
