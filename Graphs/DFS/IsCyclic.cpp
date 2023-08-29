@@ -38,7 +38,7 @@ int main ()
         int a,b;
         cin>>a>>b;
         v[a].push_back(b);
-        ///v[b].push_back(a); // Change here for directed graph
+        ///v[b].push_back(a); // Change here for undirected graph
     }
 
     bool res = 0;
