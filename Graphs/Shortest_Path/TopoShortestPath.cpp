@@ -35,6 +35,19 @@ void TopoSort(int ver, vector<pair<int,int>>v[], stack<int> &sortList)
     color[ver] = 1;
 }
 
+void printPath(int start, int ver)
+{
+    if (ver==start)
+    {
+        cout<<ver<<" ";
+        return;
+    }
+    printPath(start,par[ver]);
+
+    //if ()
+    cout<<ver<<" ";
+}
+
 
 int main()
 {
@@ -78,7 +91,7 @@ int main()
     {
 
         int ver = sortList.top();
-        cout<<ver<<endl;
+        //cout<<ver<<endl;
         sortList.pop();
         for (auto x: v[ver])
         {
@@ -89,6 +102,12 @@ int main()
         }
     }
 
-    cout<<dis[5]; // To print the distance of any vertex from the starting one
+    cout<<dis[5]<<endl; // To print the distance of any vertex from the starting one
 
+
+    printPath(start,5);// To print the path
+
+    cout<<endl;
+
+    
 }
