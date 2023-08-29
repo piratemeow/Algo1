@@ -2,12 +2,28 @@
 using namespace std;
 
 const int inf = 1e6 + 7;
+const int N = 1e4+5;
+int v[N][N];
+int dis[N][N];
+int path [N][N];
 
 // Implementation of Floyad-Warshal algorithm
 // Complexity O(V^3)
 // Wroks on negative edges
 // Does not work on negative cycles
-// Can detect negative cycle
+// Can detect negative cycles
+
+
+void printPath(int start, int ver , int path[][N])
+{
+    if (path[start][ver]==-1)
+    {
+        return;
+    }
+
+    printPath(start,path[start][ver],path);
+    cout<<path[start][ver]<<" ";
+}
 
 int main ()
 {
@@ -19,7 +35,7 @@ int main ()
 
     // We will be needing adjacency matrix for this algorithm
 
-    int v[n+1][n+1];
+    
     memset(v,0,sizeof v);
 
     while (m--)
@@ -27,13 +43,29 @@ int main ()
         int a,b,wt;
         cin>>a>>b>>wt;
         v[a][b]=wt;
-        v[b][a]=wt;
+        v[b][a]=wt; // Change here for the directed graph
     }
 
     // We can also do an inplace algoritm
 
-    int dis[n+1][n+1];
     memset(dis,0,sizeof dis);
+
+    for (int i=1;i<=n;i++)
+    {
+        for (int j=1;j<=n;j++)
+        {
+            if (v[i][j]!=0)
+            {
+                path[i][j]=i;
+                path[j][i]=j;// Change here for the directed graph
+            }
+            else
+            {
+                path[i][j]=-1;
+            }
+
+        }
+    }
 
     for (int i=1;i<=n;i++)
     {
@@ -46,12 +78,12 @@ int main ()
                 dis[i][j]=inf;
             }
 
-            cout<<dis[i][j]<<" ";
+            //cout<<dis[i][j]<<" ";
         }
-        cout<<endl;
+        //cout<<endl;
     }
 
-    cout<<endl;
+    //cout<<endl;
 
     for (int k = 1; k<=n;k++)
     {
@@ -60,7 +92,15 @@ int main ()
             for (int j = 1;j<=n;j++)
             {
                 if (dis[i][k]<inf && dis[k][j]<inf)
-                    dis[i][j] = min (dis[i][j],dis[i][k]+dis[k][j]);
+                {
+                    if (dis[i][j]>dis[i][k]+dis[k][j])
+                    {
+                        dis[i][j] = dis[i][k]+dis[k][j];
+                        path[i][j] = k;
+                    }
+                    
+                }
+                    
             }
         }
     }
@@ -80,11 +120,13 @@ int main ()
 
     else
     {
+        printPath(1,5,path);
+        cout<<endl;
         for (int i=1;i<=n;i++)
         {
             for (int j=1;j<=n;j++)
             {
-                cout<<dis[i][j]<<" ";
+                cout<<path[i][j]<<" ";
             }   
             cout<<endl;
         }
