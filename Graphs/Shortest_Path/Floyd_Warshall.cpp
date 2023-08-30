@@ -96,7 +96,7 @@ int main ()
                     if (dis[i][j]>dis[i][k]+dis[k][j])
                     {
                         dis[i][j] = dis[i][k]+dis[k][j];
-                        path[i][j] = k;
+                        path[i][j] = path[k][j];
                     }
                     
                 }
@@ -120,7 +120,7 @@ int main ()
 
     else
     {
-        printPath(1,5,path);
+        printPath(5,1,path);
         cout<<endl;
         for (int i=1;i<=n;i++)
         {
