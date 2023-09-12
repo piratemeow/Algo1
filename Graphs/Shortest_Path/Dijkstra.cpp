@@ -4,7 +4,7 @@ using namespace std;
 const int inf = 1e9 + 7;
 
 // Implementation of dijkstra algorithm
-// Complexity O(VlogV + E)
+// Complexity O(VlogV + ElogV) = O(ElogV)
 // 1 based indexing of edges
 // Does not work for the graphs with negative edge weights and cycles
 // TLE for the graphs with negative cycles

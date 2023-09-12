@@ -2,6 +2,7 @@
 using namespace std;
 const int N = 1e7 +5;
 int visi[N];
+// Complexity: O(ElogE + ElogV) = O(ElogV)
 
 int main()
 {

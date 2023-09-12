@@ -1,6 +1,8 @@
 #include<bits/stdc++.h>
 using namespace std;
 
+// Complexity: O(ElogV)
+
 
 bool same_set(int v1,int v2, int dsu[])
 {
