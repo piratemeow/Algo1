@@ -28,6 +28,23 @@ void dfs(vector<int> v[], int ver)
     t = t+1;
     f[ver] = t;
 }
+
+void scc(vector<int> v[], int ver,vector<int> &SCC)
+{
+    //cout<<ver<<endl;
+    color[ver] = -1;
+    SCC.push_back(ver);
+    for (int x : v[ver])
+    {
+        if (color[x] == 0)
+        {
+            scc(v,x,SCC);
+        }
+    }
+
+    color[ver] = 1;
+   
+}
 int main ()
 {
     freopen("input.txt","r",stdin);
@@ -60,7 +77,7 @@ int main ()
         p.push_back({f[i],i});
     }    
 
-    sort(p.begin(),p.end());
+    sort(p.begin(),p.end(),greater<pair<int,int>>());
 
     vector<int> trans[n+1];
 
@@ -75,18 +92,32 @@ int main ()
     memset(color,0,sizeof color);
 
     int count = 0;
+    vector<vector<int>> ans;    
 
-    for (int i=p.size()-1;i>=0;i--)
+    for (int i=0;i<p.size();i++)
     {
+       
+       
         if (color[p[i].second]==0)
         {
-            dfs(trans,p[i].second);
-            cout<<p[i].second<<endl;
+            vector<int> SCC;
+            
+            scc(trans,p[i].second,SCC);
+            ans.push_back(SCC);
             
             count++;
         }
     }
     
     cout<<count<<endl;
+
+    for (int i=0;i<ans.size();i++)
+    {
+        for (int j=0;j<ans[i].size();j++)
+        {
+            cout<<ans[i][j]<<" ";
+        }
+        cout<<endl;
+    }
 
 }
