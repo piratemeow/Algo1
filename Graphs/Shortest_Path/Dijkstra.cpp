@@ -23,7 +23,7 @@ int main()
         int a,b,wt;
         cin>>a>>b>>wt;
         v[a].push_back({b,wt});
-        v[b].push_back({a,wt});
+        //v[b].push_back({a,wt});
     }
 
     priority_queue<pair<int,int> , vector<pair<int,int>> , greater<pair<int,int>>> pq;
@@ -45,15 +45,18 @@ int main()
         int wt = cur.first;
         int ver = cur.second;
         visi[ver]= 1;
+       
 
         for (auto x : v[ver])
         {
-            if (visi[x.first]==1)
-                continue;
-
+            // if (visi[x.first]==1)
+            // {
+            //     continue;
+            // }
             if (dis[ver] + x.second < dis[x.first])
             {
                 dis [x.first] = dis[ver] + x.second;
+                
                 pq.push({x.second,x.first});
             }
         }
