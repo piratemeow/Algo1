@@ -1,0 +1,4 @@
+The longest increasing sequence in reverse 
+13 10 8 7 5 2 
+6
+6
