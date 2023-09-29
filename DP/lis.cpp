@@ -87,7 +87,7 @@ int binary(int arr[], int n)
         {
             repli[x]=arr[i];
         }
-
+    
     }
 
     return repli.size();
