@@ -1,5 +1,4 @@
 // Given a m x n grid filled with non-negative numbers, find a path from top left to bottom right, which minimizes the sum of all numbers along its path.
-
 // Note: You can only move either down or right at any point in time.
 
 #include <bits/stdc++.h>
@@ -56,6 +55,51 @@ int top_down(int i, int j, int n, int m, vector<vector<int>> &grid)
         
         return dp[i][j] = min(a,b);
 }
+
+string print_path(vector<vector<int>> &grid)
+{
+    bottom_up(grid);
+
+    string path = "";
+    int i = grid.size();
+    int j = grid[0].size();
+
+    // for (int i=1;i<=grid.size();i++)
+    // {
+    //     for (int j = 1;j<=grid[0].size();j++)
+    //     {
+    //         cout<<dp[i][j]<<" ";
+    //     }
+
+    //     cout<<endl;
+    // }
+    while (i>0 && j>0)
+    {
+        if (i==1)
+        {
+            path+='R';
+            j--;
+        }
+        else if (j==1)
+        {
+            path+='D';
+            i--;
+        }
+        else if (dp[i-1][j]<=dp[i][j-1])
+        {
+            path+='D';
+            i--;
+        }
+        else
+        {
+            path+='R';
+            j--;
+        }
+    }
+    path.erase(path.size()-1);
+    reverse(path.begin(),path.end());
+    return path;
+}
 int main()
 {
     freopen("input.txt","r",stdin);
@@ -81,5 +125,9 @@ int main()
     memset(dp,-1,sizeof dp);
 
     cout<<top_down(0,0,n,m,grid)<<endl;
+
+    cout<<"The path is \n";
+
+    cout<<print_path(grid)<<endl;
         
 }
