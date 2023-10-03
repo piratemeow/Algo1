@@ -1,6 +1,4 @@
-The result from the top down appraoch
-3
-The result from the bottom up appraoch
-3
-The LCS is
-ace
+Answer using bottom up approach
+12
+Answer using top down approach
+12
