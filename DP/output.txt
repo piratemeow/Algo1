@@ -1,9 +1,1 @@
-Answer using bottom up approach
-7
-Answer using top down approach
-7
-The path is 
-1 4 5 
-2 7 6 
-6 8 7 
-RRDD
+0
