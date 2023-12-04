@@ -27,7 +27,7 @@ int main ()
         int a,b,wt;
         cin>>a>>b>>wt;
         v[a].push_back({b,wt});
-        //v[b].push_back({a,wt});
+        v[b].push_back({a,wt});
     }
 
     vector<pair<pair<int,int>, int>> edges;
